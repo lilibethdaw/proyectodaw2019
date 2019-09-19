@@ -1,0 +1,107 @@
+﻿header {
+	width:100%; /* Establecemos que el header abarque el 100% del documento */
+	overflow:hidden; /* Eliminamos errores de float */
+	background:#252932;
+	margin-bottom:20px;
+}
+
+.wrapper {
+	width:90%; /* Establecemos que el ancho sera del 90% */
+	max-width:1000px; /* Aqui le decimos que el ancho máximo sera de 1000px */
+	margin:auto; /* Centramos los elementos */
+	overflow:hidden; /* Eliminamos errores de float */
+}
+
+ #logo {
+	color:#f2f2f2;
+	font-size:70px;
+	line-height:200px;
+	text-align: center;
+
+}
+
+header nav {
+	float:right;
+	line-height:200px;
+}
+
+header nav a {
+	display:inline-block;
+	color:#fff;
+	text-decoration:none;
+	padding:10px 20px;
+	line-height:normal;
+	font-size:20px;
+	font-weight:bold;
+	-webkit-transition:all 500ms ease;
+	-o-transition:all 500ms ease;
+	transition:all 500ms ease;
+}
+
+header nav a:hover {
+	background:#f56f3a;
+	border-radius:50px;
+}
+
+.respuesta
+{
+
+width: 50%;
+padding: 10px;
+margin: 10px;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+#regresar{
+	width: 10px;
+}
+
+
+#pregunta{
+	width: 60%;
+	height: 100px;
+}
+
+#boton{
+	width: 100px;
+}
+
+#preguntass{
+	padding: 20px;
+}
+#crear{
+	width: 50%;
+	height: 50%;
+}
+#ver{
+	width: 50%;
+	
+}
+
+#Nombre{
+	float: left;
+
+
+}
+
+#Nota{
+ 
+ float: center;
+}
+
+#listates{
+
+	float: left;
+	font-family: bold;
+}
+
