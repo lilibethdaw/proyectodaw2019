@@ -1,16 +1,20 @@
 var contador = 1;//cantidad de preguntas que hay en la BD
 var contador_s;
+var cronometro;
+var NoUser=1;
 function loging(){
-
+contador=1;
 	var str ="";
-	document.getElementById("contenido").innerHTML = str; 	       
+	document.getElementById("contenido").innerHTML = str; 	  
+	 
+         
 		str += "<div id=\"formContent\">";
 		str += "   <div class=\"fadeIn first\">";
 		str += "  </div>";
 		str += "  <form>";
-		str += "	<input type=\"text\" id=\"usuarioid\" class=\"fadeIn second\" name=\"login\" placeholder=\"Usuario\">";
-		str += "	<input type=\"text\" type=\"password\" id=\"contra\" class=\"fadeIn third\" name=\"login\" placeholder=\"Contraseña\">";
-		str += "<button onclick=\"Usuario()\">Entrar</button>";
+		str += "	<p><input type=\"text\" id=\"usuarioid\" class=\"fadeIn second\" name=\"login\" placeholder=\"Usuario\"><br></p>";
+		str += "	<p><input type=\"password\" id=\"contra\" class=\"fadeIn third\" name=\"login\" placeholder=\"Contraseña\"><br></p>";
+		str += "   <p><button class='btn btn-outline-dark' onclick=\"Usuario()\">Entrar</button ><br></p>";
 		str += "  </form>";
 		str += "  <div id=\"formFooter\">";
 		str += "  </div>";
@@ -34,6 +38,7 @@ function Usuario(){//determina que tipo de usuario se está logueando (alumno o 
 	{
 		if (passwd=="12345")
 		{
+		NoUser=2;//cambia esta variable para saber que le usuario si fue identificado
 		alert("Bienvenido alumno");
 		alumno();
 		}
@@ -44,9 +49,14 @@ function Usuario(){//determina que tipo de usuario se está logueando (alumno o 
 	{
 		if (passwd=="3456")
 		{
+		NoUser=2;//cambia esta variable para saber que le usuario si fue identificado
 		alert("Bienvenida profesora");
 		profesor();
 		}
+	}
+	
+	if (NoUser==1){
+	alert("USUARIO O CONTRASENA INVALIDO");
 	}
 }
 
@@ -54,15 +64,15 @@ function alumno(){ //pantalla donde los alumnos eligen que test van a realizar
 str = "";
 document.getElementById("contenido").innerHTML = str;
 
-str += "	<h1> Los Test Disponibles son:</h1>";
+str += "	<h1><center> Los Test Disponibles son:</center></h1><br>";
 
 str += "    <ul id=\"listatest\">";
-str += "    <li><button onclick=\"Test()\">Nombre del test</button></li>";
-str += "    <li><button onclick=\"Test()\">Nombre del test</button></li>";
-str += "	<li><button onclick=\"Test()\">Nombre del test</button></li>";
-str += "    <li><button onclick=\"Test()\">Nombre del test</button></li>";
-str += "    <li><button onclick=\"Test()\">Nombre del test</button></li>";
-str += "	<li><button onclick=\"Test()\">Nombre del test</button></li>";
+str += "    <p><button class='btn btn-outline-secondary' onclick=\"Test()\">Nombre del test</button><br></p>";
+str += "    <p><button class='btn btn-outline-secondary' onclick=\"Test()\">Nombre del test</button><br></p>";
+str += "	<p><button class='btn btn-outline-secondary' onclick=\"Test()\">Nombre del test</button><br></p>";
+str += "    <p><button class='btn btn-outline-secondary' onclick=\"Test()\">Nombre del test</button><br></p>";
+str += "    <p><button class='btn btn-outline-secondary' onclick=\"Test()\">Nombre del test</button><br></p>";
+str += "	<p><button class='btn btn-outline-secondary' onclick=\"Test()\">Nombre del test</button><br></p>";
 str += "    </ul>";
 
 document.getElementById("contenido").innerHTML = str;
@@ -74,9 +84,9 @@ document.getElementById("contenido").innerHTML = str;
 str += "<center>";
 str += "<h3>";
 str += "Que desea hacer? </h3>";
-str += "<button onclick=\"CrearTest()\">Crear Test</button>";
-str += "<button onclick=\"ResultadosTest()\">Ver Resultados</button>";
-str += "<button onclick=\"loging()\">salir</button>";
+str += "<p><button class='btn btn-outline-primary' onclick=\"CrearTest()\">Crear Test</button><br></p>";
+str += "<p><button class='btn btn-outline-success' onclick=\"ResultadosTest()\">Ver Resultados</button><br></p>";
+str += "<p><button class='btn btn-outline-danger' onclick=\"loging()\">salir</button><br></p>";
 str += "</center>";
 document.getElementById("contenido").innerHTML = str;
 }
@@ -93,33 +103,64 @@ if (contador==1)
 
 str += "	<p>	<span id=\"segundos\">30</span>	</p>";
 
-str += "<h1 id=\"preguuta\">Cual es el rio mas grande de El Salvador?</h1><br>";
-str += "<h2>Rio Lempa<input type=\"radio\" name=\"opcion\"  ></h2><br>";
-str += "<h2>Rio Goascoran<input type=\"radio\" name=\"opcion\"  ></h2><br>";
-str += "<h2>Rio Torola<input type=\"radio\" name=\"opcion\"  ></h2><br>";
-str += "<h2>Rio Paz<input type=\"radio\" name=\"opcion\" ></h2>";
+str += "<h1 id=\"pregunta\">Cual es el rio mas grande de El Salvador?</h1><br>";
+str += "<img id=\"imagen\" src=\"\" width=\"200\" height=\"100\">";
+str += "<h2 id=\"respuesta1\">Rio Lempa<input type=\"radio\" name=\"opcion\"  ></h2><br>";
+str += "<h2 id=\"respuesta2\">Rio Goascoran<p><input type=\"radio\" name=\"opcion\"  ></h2><br>";
+str += "<h2 id=\"respuesta3\">Rio Torola<input type=\"radio\" name=\"opcion\"  ></h2><br>";
+str += "<h2 id=\"respuesta4\">Rio Paz<input type=\"radio\" name=\"opcion\" ></h2>";
 
-str += "<button onclick=\"CambioPregunta()\">Siguiente pregunta</button>";
+str += "<button class='btn btn-outline-primary' onclick=\"CambioPregunta()\">Siguiente pregunta</button>";
 }
 
 if (contador==2)
 		{
 		str += "	<p>	<span id=\"segundos\">30</span>	</p>";
 
-str += "<h1 id=\"preguuta\">Aproximadamente, Que porcentaje de la superficie de la tierra es agua?</h1><br>";
-str += "<h2>10%<input type=\"radio\" name=\"opcion\"  ></h2><br>";
-str += "<h2>50%<input type=\"radio\" name=\"opcion\"  ></h2><br>";
-str += "<h2>70%<input type=\"radio\" name=\"opcion\"  ></h2><br>";
-str += "<h2>95%<input type=\"radio\" name=\"opcion\" ></h2>";
+str += "<h1 id=\"pregunta\">Aproximadamente, Que porcentaje de la superficie de la tierra es agua?</h1><br>";
+str += "<img id=\"imagen\" src=\"\" width=\"200\" height=\"100\">";
+str += "<h2 id=\"respuesta1\">10%<input type=\"radio\" name=\"opcion\"  ></h2><br>";
+str += "<h2 id=\"respuesta2\">50%<input type=\"radio\" name=\"opcion\"  ></h2><br>";
+str += "<h2 id=\"respuesta3\">70%<input type=\"radio\" name=\"opcion\"  ></h2><br>";
+str += "<h2 id=\"respuesta4\">95%<input type=\"radio\" name=\"opcion\" ></h2>";
 
 str += "<button onclick=\"CambioPregunta()\">Siguiente pregunta</button>";	
 		}
 
-
 document.getElementById("contenido").innerHTML = str;
+
+        
+
+            var pregunta = document.getElementById('pregunta');
+            var imagen = document.getElementById('imagen');
+            var respuesta1 = document.getElementById('respuesta1');
+            var respuesta2 = document.getElementById('respuesta2');
+			var respuesta3 = document.getElementById('respuesta3');
+            var respuesta4 = document.getElementById('respuesta4');
+
+
+            var dbRef = firebase.database().ref().child('profesor').child('profesor1').child('tests').child('test1' ).child('pregunta'+contador+'').child('texto');
+            dbRef.on('value', snap => pregunta.innerText=snap.val());
+
+            var dbRef = firebase.database().ref().child('profesor').child('profesor1').child('tests').child('test1' ).child('pregunta'+contador+'').child('imagen');
+            dbRef.on('value', snap => imagen.src=snap.val());
+
+            var dbRef = firebase.database().ref().child('profesor').child('profesor1').child('tests').child('test1' ).child('pregunta'+contador+'').child('respuesta1').child('texto');
+            dbRef.on('value', snap => respuesta1.innerHTML=snap.val()+"<input type=\"radio\" name=\"opcion\"  >");
+
+            var dbRef = firebase.database().ref().child('profesor').child('profesor1').child('tests').child('test1' ).child('pregunta'+contador+'').child('respuesta2').child('texto');
+            dbRef.on('value', snap => respuesta2.innerHTML=snap.val()+"<input type=\"radio\" name=\"opcion\"  >");
+			
+            var dbRef = firebase.database().ref().child('profesor').child('profesor1').child('tests').child('test1' ).child('pregunta'+contador+'').child('respuesta3').child('texto');
+            dbRef.on('value', snap => respuesta3.innerHTML=snap.val()+"<input type=\"radio\" name=\"opcion\"  >");
+        
+            var dbRef = firebase.database().ref().child('profesor').child('profesor1').child('tests').child('test1' ).child('pregunta'+contador+'').child('respuesta4').child('texto');
+            dbRef.on('value', snap => respuesta4.innerHTML=snap.val()+'<input type=\"radio\" name=\"opcion\"  >');
+
+
 contador_s =30;
-var cronometro;
-	
+
+	clearInterval(cronometro);
 		s = document.getElementById("segundos");
 		cronometro = setInterval(
 			function(){
@@ -193,7 +234,7 @@ document.getElementById("contenido").innerHTML = str;
 str += "	<form id=\"test\" >";
 str += " 	<h1> Nombre del test</h1>";
 str += " 	<input type=\"text\" id=\"nombretest\">";
-str += "	<button onclick=\"Preguntas()\">Aceptar</button>";
+str += "	<button class='btn btn-outline-secondary' onclick=\"Preguntas()\">Aceptar</button>";
 str += "	</form>";
 
 document.getElementById("contenido").innerHTML = str;
@@ -208,14 +249,14 @@ str = "";
 document.getElementById("contenido").innerHTML = str;
 
 
-str += "            pregunta: <input type=\"text\" id=\"pregunta\" name=\"fname\" id=\"pregunta\">";
-str += "            <input type=\"file\" name=\"agregar\" id=\"botonimagen\"  value=\"agregar imagen\"><br>";
-str += "            respuesta: <input type=\"text\" id=\"resp1\" name=\"lname1\" class=\"respuesta1\"><input type=\"radio\" name=\"numero\" ><br>";
-str += "            respuesta: <input type=\"text\" id=\"resp2\" name=\"lname2\" class=\"respuesta2\"><input type=\"radio\" name=\"numero\" ><br>";
-str += "            respuesta: <input type=\"text\" id=\"resp3\" name=\"lname3\" class=\"respuesta3\"><input type=\"radio\" name=\"numero\" ><br>";
-str += "            respuesta: <input type=\"text\" id=\"resp4\" name=\"lname4\" class=\"respuesta4\"><input type=\"radio\" name=\"numero\" ><br>";
-str += "            <button onclick=\"AgregarPregunta()\">Agregar pregunta</button>";
-str += "            <button onclick=\"Terminartest()\">Terminar</button>";
+str += "            <p>pregunta: <input type=\"text\" id=\"pregunta\" name=\"fname\" id=\"pregunta\"></p>";
+str += "            <p><input class='btn btn-outline-secondary' type=\"file\" name=\"agregar\" id=\"botonimagen\"  value=\"agregar imagen\"><br></p>";
+str += "            <p>respuesta: <input type=\"text\" id=\"resp1\" name=\"lname1\" class=\"respuesta1\"><input type=\"radio\" name=\"numero\" ><br></p>";
+str += "            <p>respuesta: <input type=\"text\" id=\"resp2\" name=\"lname2\" class=\"respuesta2\"><input type=\"radio\" name=\"numero\" ><br></p>";
+str += "            <p>respuesta: <input type=\"text\" id=\"resp3\" name=\"lname3\" class=\"respuesta3\"><input type=\"radio\" name=\"numero\" ><br></p>";
+str += "            <p>respuesta: <input type=\"text\" id=\"resp4\" name=\"lname4\" class=\"respuesta4\"><input type=\"radio\" name=\"numero\" ><br></p>";
+str += "            <button class='btn btn-outline-secondary' onclick=\"AgregarPregunta()\">Agregar pregunta</button>";
+str += "            <button class='btn btn-outline-secondary' onclick=\"Terminartest()\">Terminar</button>";
 
 			
 document.getElementById("contenido").innerHTML = str;
@@ -243,14 +284,14 @@ function ResultadosTest(){//pantalla para los maestros para elegir el test del c
 str = "";
 document.getElementById("contenido").innerHTML = str;
 
-str += "	<h1> De que test desea conocer los resultados?:</h1>";
+str += "	<h1> De que test desea conocer los resultados?</h1>";
 str += "    <ul id=\"listaresultados\">";
-str += "    <li><button onclick=\"RTest()\">Nombre del testA</button></li>";
-str += "    <li><button onclick=\"RTest()\">Nombre del testB</button></li>";
-str += "	<li><button onclick=\"RTest()\">Nombre del testC</button></li>";
-str += "    <li><button onclick=\"RTest()\">Nombre del testD</button></li>";
-str += "    <li><button onclick=\"RTest()\">Nombre del testE</button></li>";
-str += "	<li><button onclick=\"RTest()\">Nombre del testN</button></li>";
+str += "    <p><button class='btn btn-outline-secondary'onclick=\"RTest()\">Nombre del test A</button></p>";
+str += "    <p><button class='btn btn-outline-secondary' onclick=\"RTest()\">Nombre del test B</button></p>";
+str += "	<p><button class='btn btn-outline-secondary' onclick=\"RTest()\">Nombre del test C</button></p>";
+str += "    <p><button class='btn btn-outline-secondary' onclick=\"RTest()\">Nombre del test D</button></p>";
+str += "    <p><button class='btn btn-outline-secondary' onclick=\"RTest()\">Nombre del test E</button></p>";
+str += "	<p><button class='btn btn-outline-secondary' onclick=\"RTest()\">Nombre del test N</button></p>";
 str += "    </ul>";
 document.getElementById("contenido").innerHTML = str;
 	
@@ -261,9 +302,9 @@ function RTest(){//pantalla para los maestros donde observan las notas de los al
 str = "";
 document.getElementById("contenido").innerHTML = str;
 
-str += "	<h1 id=\"tema\">Resultados</h1> ";
+str += "	<center><h1 id=\"tema\">Resultados</h1></center><br> ";
 
-str += "   <div id=\"Nombre\">";
+str += "   <div class='col-md-6 col-center' id=\"Nombre\">";
 str += "   <h2>Nombre</h2>";
 str += "   <p>Alumno 1</p>";
 str += "   <p>Alumno 2</p>";
@@ -277,7 +318,7 @@ str += "    <p>8.00</p>";
 str += "   <p>6.8</p>";
 str += "    <p>10.00</p>";
    
-str += "<button onclick=\"profesor()\">Regresar a resultados</button>";
+str += "<br><button class='btn btn-outline-success' onclick=\"profesor()\">Regresar a resultados</button>";
   str += "</div>";
 
 document.getElementById("contenido").innerHTML = str;
